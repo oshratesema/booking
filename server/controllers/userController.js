@@ -24,7 +24,7 @@ const deleteUser = async (req, res, next) => {
 
 const getUser = async (req, res, next) => {
   try {
-    const user = await user.findById(req.params.id);
+    const user = await user.findById(req.params._id);
     res.status(200).json(User);
   } catch (err) {
     next(err);

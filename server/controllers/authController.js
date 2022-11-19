@@ -19,7 +19,7 @@ const register = async (req, res, next) => {
     next(err);
   }
 };
-//63729b4cea9e55f1b75d39f4
+
 const login = async (req, res, next) => {
   try {
     const user = await User.findOne({username: req.body.username})

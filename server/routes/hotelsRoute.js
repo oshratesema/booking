@@ -1,7 +1,5 @@
 const express = require("express");
-const { createHotel, deleteHotel, updateHotel, getHotel, getAllHotels, countByCity } = require("../controllers/hotelController");
-const Hotel = require("../models/hotelModel");
-const createError = require('../utils/error');
+const { createHotel, deleteHotel, updateHotel, getHotel, getAllHotels, countByCity, countByType} = require("../controllers/hotelController");
 const {verifyAdmin } = require("../utils/verifyToken");
 
 const router = express.Router();
@@ -13,14 +11,14 @@ router.post("/",verifyAdmin, createHotel);
 router.put('/:id',verifyAdmin, updateHotel)
 
 //DELETE
-router.delete("/find/:id",verifyAdmin, deleteHotel)
+router.delete("/:id",verifyAdmin, deleteHotel)
 
 //GET BY ID
-router.get("/:id", getHotel)
+router.get("/find/:id", getHotel)
 
 //GET ALL
  router.get("/", getAllHotels)
  router.get("/countByCity", countByCity)
- router.get("/countByType", getAllHotels)
+ router.get("/countByType", countByType)
 
 module.exports = router;

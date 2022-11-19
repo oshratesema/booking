@@ -3,6 +3,7 @@ const dotenv = require("dotenv");
 const mongoose = require("mongoose");
 const app = express();
 const cookieParser = require("cookie-parser")
+const cors = require('cors');
 
 const authRoute = require('./routes/authRoute')
 const usersRoute = require('./routes/usersRoute')
@@ -25,6 +26,7 @@ mongoose.connection.on("disconnected", () => {
 });
 
 app.use(cookieParser());
+app.use(cors());
 app.use(express.json());
 
 app.use('/api/auth', authRoute)
